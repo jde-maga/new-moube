@@ -43,7 +43,7 @@ const columns = [{
 ];
 
 class TableUsers extends Component {
-  static PropTypes = {
+  static propTypes = {
     history: PropTypes.object.isRequired
   };
 
