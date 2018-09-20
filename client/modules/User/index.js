@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-import { Card, Icon, Tabs } from "antd";
+import { Card, Icon, Tabs, Collapse } from "antd";
 
 import { user } from './mock';
 
 import CursusPane from "./components/CursusPane";
 
 import styles from "./styles";
+
 const TabPane = Tabs.TabPane;
+const Panel = Collapse.Panel;
 
 class User extends Component {
   static propTypes = {
@@ -35,6 +37,7 @@ class User extends Component {
   render() {
     return (
       <div className={styles.container}>
+      <Collapse></Collapse>
       <Card
         title={user.login}
               >
