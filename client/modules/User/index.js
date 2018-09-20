@@ -15,10 +15,21 @@ class User extends Component {
     match: PropTypes.object.isRequired
   };
 
-  getCursusTab = (cursus) => {
-    return (
-      <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
-    )
+  getCursusTab = () => {
+
+    const allCursus = user.cursus_users;
+    const projects = user.projects_users;
+
+
+    return allCursus.map((cursus) => {
+      return (
+        <TabPane tab={cursus.cursus.name} key={cursus.id}>
+        <CursusPane cursus={cursus} projects={projects.filter((project) => {
+          return project.cursus_ids.find((id) => id === cursus.cursus.id)
+        })} />
+      </TabPane>
+      )
+    })
   }
 
   render() {
@@ -53,9 +64,8 @@ class User extends Component {
       </div></div>
       </Card>
       <Card title="Cursus">
-      <Tabs defaultActiveKey="1">    
-      {this.getCursusTab()}
-
+      <Tabs defaultActiveKey="1">
+        {this.getCursusTab()}
       </Tabs>
       </Card>
       </div>
